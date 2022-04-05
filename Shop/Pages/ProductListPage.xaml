@@ -9,38 +9,50 @@
       Title="ProductListPage">
 
     <Grid>
-        <StackPanel Margin="10" >
-            <DataGrid Height="300" Margin="15" AutoGenerateColumns="False" Name="ProductList">
-                <DataGrid.Columns >
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Photo}"></Image>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Описание" Binding="{Binding Description}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ед.измерения" Binding="{Binding Unit.Name}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Дата добавления" Binding="{Binding AddDate , StringFormat ='dd.MM.yy'}"></DataGridTextColumn>
-                   
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <ListView ItemsSource="{ Binding ProductCountry}">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <Label Height="30" Content="{Binding Country.Name}" Background="{Binding Country.Color}"></Label>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-           
-            </DataGrid>
+        <StackPanel Margin="5" >
+            <StackPanel>
+                <DataGrid Height="250"  Width="700" Margin="5" AutoGenerateColumns="False" Name="ProductList">
+                    <DataGrid.Columns >
+                      
+                        <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
+
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Photo}" Height="60"></Image>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Описание" Binding="{Binding Description}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ед.измерения" Binding="{Binding Unit.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Дата добавления" Binding="{Binding AddDate , StringFormat ='dd.MM.yy'}"></DataGridTextColumn>
+
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ListView ItemsSource="{ Binding ProductCountry}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Height="30"  Content="{Binding Country.Name}" Background="{Binding Country.Color}"></Label>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Height="25" x:Name="AddBtnt" Click="AddBtnt_Click">Добавить</Button>
+                <Button  Height="25" x:Name="EditBtnt" Margin=" 10 0" Click="EditBtnt_Click">Изменить</Button>
+                <Button  Height="25" x:Name="DelBtnt" Click="DelBtnt_Click">Удалить</Button>
+                <Button Margin="5"  Height="25" x:Name="TestBtnt" Click="TestBtnt_Click">test</Button>
+            </StackPanel>
+         
         </StackPanel>
         
     </Grid>

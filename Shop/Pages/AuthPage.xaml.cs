@@ -31,6 +31,7 @@ namespace Shop.Pages
      
         private void AuthBtn_Click(object sender, RoutedEventArgs e)
         {
+            
             MainWindow.AuthUser = MainWindow.db.User.ToList().Find(c => c.Login == LoginTb.Text.Trim() && c.Password == PassTb.Text.Trim());
             if (MainWindow.AuthUser == null)
             {

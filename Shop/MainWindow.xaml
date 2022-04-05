@@ -18,7 +18,7 @@
             <Button Width="55"  Content="Назад" Margin="10" Height="30" Name="BackBtn" Click="BackBtn_Click"></Button>
             <Button  Width="55" Content="Вперед" Margin="10"  Height="30"  Name="ForwardBtn" Click="ForwardBtn_Click"></Button>
         </StackPanel>
-        <StackPanel Margin="10"  HorizontalAlignment ="Center" VerticalAlignment="Center" Grid.Row="1">
+        <StackPanel Margin="5"  HorizontalAlignment ="Center" VerticalAlignment="Center" Grid.Row="1">
                 <Frame x:Name="MyFrame" NavigationUIVisibility="Hidden"></Frame>
         </StackPanel>
       
