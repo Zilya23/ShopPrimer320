@@ -1,0 +1,61 @@
+﻿<Page x:Class="Shop.Pages.AddEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Shop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" FontSize="20"
+      Title="AddEditPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <StackPanel Margin="10">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="Наименование" Margin="10"></TextBlock >
+                    <TextBox Text="{Binding Name}" x:Name="NameTb" Height="30" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="Описание" Margin="10"></TextBlock >
+                    <TextBox Text="{Binding Description}" x:Name="DescriptionTb" Height="30" Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="Ед.измерения" Margin="10"></TextBlock >
+                    <ComboBox SelectedItem="{Binding Unit}" DisplayMemberPath="Name"  x:Name="UnitCb" Height="30" Width="200"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="Изображение" Margin="10"></TextBlock >
+                    <Button Height="40" x:Name="AddPhoto" Content="Добавить фото" Click="AddPhoto_Click"></Button>
+                    <Image Height="150" Source="{Binding Photo}" x:Name="PhotoProductImg" Width="200"></Image>
+                </StackPanel>
+                <StackPanel>
+
+                    <Button x:Name="SaveBtn" Click="SaveBtn_Click">Сохранить</Button>
+                </StackPanel>
+            </StackPanel>
+          
+            <StackPanel Margin="10">
+                <StackPanel  >
+                    <Label Name="CountryLabel">Страны поставщики</Label>
+                    <ListView Visibility="Hidden" x:Name="CountryLv" ItemsSource="{Binding ProductCountry}" Width="150" Height="150">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Label Height="30" FontSize="15" Content="{Binding Country.Name}" Background="{Binding Country.Color}"></Label>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ComboBox Visibility="Hidden" Margin="2" Name="CountryCb"></ComboBox>
+                    <Button Visibility="Hidden" Margin="2" x:Name="AddCountryBtn" Content="Добавить срану" Click="AddCountryBtn_Click"></Button>
+                    <Button Visibility="Hidden" Margin="2" x:Name="DelCountryBtn" Content="Удалить страну"  Click="DelCountryBtn_Click"></Button>
+                    <Button x:Name="CloseBtn" Click="CloseBtn_Click" >Завершить</Button>
+                </StackPanel>
+              
+
+            </StackPanel>
+          
+         
+
+        </StackPanel>
+        
+    </Grid>
+</Page>

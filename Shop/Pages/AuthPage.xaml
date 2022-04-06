@@ -1,0 +1,36 @@
+﻿<Page x:Class="Shop.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Shop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" FontSize="20"
+      Title="AuthPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label>Логин</Label>
+                <TextBox
+                    x:Name="LoginTb"
+                         Height="30"
+                         Width="200"/>
+            </StackPanel>
+            <StackPanel Margin="0 10" Orientation="Horizontal">
+                <Label>Пароль</Label>
+                <TextBox x:Name="PassTb"
+                         Height="30"
+                         Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="True" x:Name="CBRem" Margin="5" />
+                <TextBlock Text="Запомнить меня"
+                           Margin="5" />
+            </StackPanel>
+            <StackPanel>
+                <Button x:Name="AuthBtn" Content="Вход" Click="AuthBtn_Click"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
