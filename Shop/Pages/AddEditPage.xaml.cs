@@ -24,29 +24,37 @@ namespace Shop.Pages
     public partial class AddEditPage : Page
     {
         Product contProduct;
-        public AddEditPage( Product postProduct)
+        public AddEditPage(Product postProduct)
         {
             InitializeComponent();
-        
+
             CountryCb.ItemsSource = MainWindow.db.Country.ToList();
             CountryCb.DisplayMemberPath = "Name";
 
             UnitCb.ItemsSource = MainWindow.db.Unit.ToList();
-      
+
             contProduct = postProduct;
             this.DataContext = contProduct;
-            if (contProduct.Id !=0)
+            if (contProduct.Id != 0)
             {
                 AddCountryBtn.Visibility = Visibility.Visible;
                 DelCountryBtn.Visibility = Visibility.Visible;
-
+                AddCountryBtn.Visibility = Visibility.Visible;
+                DelCountryBtn.Visibility = Visibility.Visible;
+                CountryLabel.Visibility = Visibility.Visible;
+                CountryCb.Visibility = Visibility.Visible;
+                CountryLv.Visibility = Visibility.Visible;
             }
-            
         }
 
+
+
+
+
+
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
-        { 
-            contProduct.UnitId= (UnitCb.SelectedItem as Unit).Id;
+        {
+            contProduct.UnitId = (UnitCb.SelectedItem as Unit).Id;
             contProduct.AddDate = DateTime.Now;
             if (contProduct.Id == 0) MainWindow.db.Product.Add(contProduct);
 
@@ -54,13 +62,18 @@ namespace Shop.Pages
 
             AddCountryBtn.Visibility = Visibility.Visible;
             DelCountryBtn.Visibility = Visibility.Visible;
+            CountryLabel.Visibility = Visibility.Visible;
+            CountryCb.Visibility = Visibility.Visible;
+            CountryLv.Visibility = Visibility.Visible;
         }
 
         private void AddPhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog()
             {
-                Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg"
+                Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg",
+                
+
             };
             if (openFile.ShowDialog().GetValueOrDefault())
             {
@@ -71,18 +84,39 @@ namespace Shop.Pages
 
         private void AddCountryBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-           
+            if (CountryCb.SelectedIndex >= 0)
+            {
+                var ProdCountry = new ProductCountry();
+                var sel = CountryCb.SelectedItem as Country;
+                ProdCountry.ProductId = contProduct.Id;
+                ProdCountry.CountryId = sel.Id;
+                var isCountry = MainWindow.db.ProductCountry.Where(c => c.CountryId == sel.Id && c.ProductId == contProduct.Id).Count();            
+                if (isCountry == 0)
+                {
+                    MainWindow.db.ProductCountry.Add(ProdCountry);
+                    MainWindow.db.SaveChanges();
+                    UpdateCountryList();
+                }
+            }       
+        }
+       
+        private void DelCountryBtn_Click(object sender, RoutedEventArgs e)
+        {      
+            if ( CountryLv.SelectedItem != null)
+            {
+                var selProductCountry = MainWindow.db.ProductCountry.ToList().Find(c => c.ProductId == contProduct.Id && c.CountryId == (CountryLv.SelectedItem as ProductCountry).CountryId);
+                MainWindow.db.ProductCountry.Remove(selProductCountry);
+                MainWindow.db.SaveChanges();
+            }
 
         }
         private void UpdateCountryList()
         {
-            CountryLv.ItemsSource = MainWindow.db.ProductCountry.Where(e=> e.ProductId == contProduct.Id).ToList();
+            CountryLv.ItemsSource = MainWindow.db.ProductCountry.Where(e => e.ProductId == contProduct.Id).ToList();
         }
 
-        private void DelCountryBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
+    
+

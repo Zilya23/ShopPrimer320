@@ -24,10 +24,28 @@ namespace Shop
     {
         public static Ent db = new Ent();
         public static User AuthUser;
+        public static MainWindow main;
         public MainWindow()
         {
             InitializeComponent();
+            MyFrame.Navigated += MyFrame_Navigated;
             MyFrame.Navigate(new AuthPage());
+        }
+
+        private void MyFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (MyFrame.Content is Pages.AuthPage)
+            {
+                ForwardBtn.Visibility = Visibility.Hidden;
+                BackBtn.Visibility = Visibility.Hidden;
+                
+            }
+            else
+            {
+                ForwardBtn.Visibility = Visibility.Visible;
+                BackBtn.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)

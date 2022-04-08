@@ -11,6 +11,27 @@
     <Grid>
         <StackPanel Margin="5" >
             <StackPanel>
+                <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal">
+                    <ComboBox  Width="50" Margin="10" Name="SortCount" SelectionChanged="SortCount_SelectionChanged">
+                        <ComboBoxItem  Selected="ComboBoxItem_Selected" Content="Все" ></ComboBoxItem>
+                        <ComboBoxItem Selected="ComboBoxItem_Selected" Content="2" ></ComboBoxItem>
+                        <ComboBoxItem  Selected="ComboBoxItem_Selected" Content="3"></ComboBoxItem>
+                        <ComboBoxItem Selected="ComboBoxItem_Selected" Content="4"></ComboBoxItem>
+                    </ComboBox>
+                    <TextBox Height="25" Width="150"  x:Name="SearchNameDescTb" TextChanged="SearchNameDescTb_TextChanged"></TextBox>
+                    <ComboBox Margin="10 0" Height="25" Width="150" x:Name="UnitCb" SelectionChanged="UnitCb_SelectionChanged"></ComboBox>
+                    <ComboBox Height="25" Text="Dfvvcv" x:Name="DateCb" Width="100" SelectionChanged="DateCb_SelectionChanged">
+                        <ComboBoxItem Content="Сбросить"></ComboBoxItem>
+                        <ComboBoxItem Content="По возрастанию"></ComboBoxItem>
+                        <ComboBoxItem Content="По убыванию"></ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox Height="25"  Margin="10 0" x:Name="AlfCb" Width="100" SelectionChanged="AlfCb_SelectionChanged">
+                        <ComboBoxItem Content="Сбросить"></ComboBoxItem>
+                        <ComboBoxItem Content="от А до Я"></ComboBoxItem>
+                        <ComboBoxItem Content="от Я до А"></ComboBoxItem>
+                    </ComboBox>
+                    <Button Height="25" x:Name="DateMounthBtn" Click="DateMounthBtn_Click">Дата текущего месяца</Button>
+                </StackPanel>
                 <DataGrid Height="250"  Width="700" Margin="5" AutoGenerateColumns="False" Name="ProductList">
                     <DataGrid.Columns >
                       
@@ -47,10 +68,13 @@
                 </DataGrid>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                <Button Margin="5" Content="&lt;" Width="40"  Name="BackListBtn" Click="BackListBtn_Click"></Button>
+                <Button Margin="5"  Content="&gt;" Width="40" Name="ForwardListBtn" Click="ForwardListBtn_Click"></Button>
                 <Button Height="25" x:Name="AddBtnt" Click="AddBtnt_Click">Добавить</Button>
                 <Button  Height="25" x:Name="EditBtnt" Margin=" 10 0" Click="EditBtnt_Click">Изменить</Button>
                 <Button  Height="25" x:Name="DelBtnt" Click="DelBtnt_Click">Удалить</Button>
-                <Button Margin="5"  Height="25" x:Name="TestBtnt" Click="TestBtnt_Click">test</Button>
+           
             </StackPanel>
          
         </StackPanel>

@@ -25,29 +25,30 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Text="Изображение" Margin="10"></TextBlock >
-                    <Button x:Name="AddPhoto" Content="Добавить фото" Click="AddPhoto_Click"></Button>
-                    <Image Source="{Binding Photo}" x:Name="PhotoProductImg" Width="200"></Image>
+                    <Button Height="40" x:Name="AddPhoto" Content="Добавить фото" Click="AddPhoto_Click"></Button>
+                    <Image Height="150" Source="{Binding Photo}" x:Name="PhotoProductImg" Width="200"></Image>
+                </StackPanel>
+                <StackPanel>
+
+                    <Button x:Name="SaveBtn" Click="SaveBtn_Click">Сохранить</Button>
                 </StackPanel>
             </StackPanel>
           
             <StackPanel Margin="10">
-                <StackPanel >
-                    <Label>Страна</Label>
-                    <ListView x:Name="CountryLv" ItemsSource="{Binding ProductCountry}" Width="150" Height="150">
+                <StackPanel  >
+                    <Label Name="CountryLabel">Страны поставщики</Label>
+                    <ListView Visibility="Hidden" x:Name="CountryLv" ItemsSource="{Binding ProductCountry}" Width="150" Height="150">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Label Content="{Binding Country.Name}" Background="{Binding Country.Color}"></Label>
+                                <Label Height="30" FontSize="15" Content="{Binding Country.Name}" Background="{Binding Country.Color}"></Label>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <ComboBox Margin="2" Name="CountryCb"></ComboBox>
+                    <ComboBox Visibility="Hidden" Margin="2" Name="CountryCb"></ComboBox>
                     <Button Visibility="Hidden" Margin="2" x:Name="AddCountryBtn" Content="Добавить срану" Click="AddCountryBtn_Click"></Button>
                     <Button Visibility="Hidden" Margin="2" x:Name="DelCountryBtn" Content="Удалить страну"  Click="DelCountryBtn_Click"></Button>
                 </StackPanel>
-                <StackPanel>
-               
-                    <Button x:Name="SaveBtn" Click="SaveBtn_Click">Сохранить</Button>
-                </StackPanel>
+              
 
             </StackPanel>
           

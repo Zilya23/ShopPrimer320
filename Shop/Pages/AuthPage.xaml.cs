@@ -26,6 +26,7 @@ namespace Shop.Pages
             InitializeComponent();
             //if (Properties.Settings.Default.Login != null) 
                 LoginTb.Text = Properties.Settings.Default.Login;
+       
         }
 
      
